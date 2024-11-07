@@ -36,16 +36,14 @@ FROM FactSales
 
 --1
 SELECT
-	SUM(SalesQuantity) AS 'Qnt. Vendida'
-FROM FactSales
-
-SELECT
+	SUM(SalesQuantity) AS 'Qnt. Vendida',
 	SUM(ReturnQuantity) AS 'Qnt. Devolvida'
 FROM FactSales
+WHERE ChannelKey = 1
 
 --2
 SELECT
-	AVG(YearlyIncome) AS 'Salário Anual'
+	AVG(YearlyIncome) AS 'Média Salarial'
 FROM DimCustomer
 WHERE Occupation = 'Professional'
 
@@ -54,10 +52,8 @@ WHERE Occupation = 'Professional'
 SELECT 
     StoreName AS 'Nome da Loja',
     EmployeeCount AS 'Número de funcionários'
-FROM 
-    DimStore
-WHERE 
-    EmployeeCount = (SELECT MAX(EmployeeCount) FROM DimStore);
+FROM DimStore
+WHERE EmployeeCount = (SELECT MAX(EmployeeCount) FROM DimStore);
 
 --Menos funcionários
 SELECT

@@ -1,3 +1,5 @@
+USE ContosoRetailDW
+
 --1a
 SELECT *
 FROM DimProduct
@@ -11,16 +13,20 @@ FROM DimCustomer
 --Diminuiu a quantidade de clientes
 
 --2a
-SELECT CustomerKey, FirstName, EmailAddress, BirthDate
+SELECT 
+	CustomerKey,
+	FirstName,
+	EmailAddress,
+	BirthDate
 FROM DimCustomer
 --Estou selecionando as colunas Custumerkey, FirstName, EmailAddress, BirthDate, da tabela DimCustumer
 
 --2b
 SELECT 
-CustomerKey AS Chave, 
-FirstName AS Nome, 
-EmailAddress AS Email, 
-BirthDate AS Nascimento
+	CustomerKey AS Chave, 
+	FirstName AS Nome, 
+	EmailAddress AS Email, 
+	BirthDate AS 'Data de Nascimento'
 FROM DimCustomer
 --Estou mudando o nome das colunas utilizando o "AS"
 
@@ -35,20 +41,23 @@ FROM DimCustomer
 --"SELECT TOP (20) PERCENT" seleciona 20% das linhas
 
 --3c
-SELECT TOP (100) FirstName, EmailAddress, BirthDate
+SELECT TOP (100) 
+	FirstName, 
+	EmailAddress,
+	BirthDate
 FROM DimCustomer
 --Estou selecionando as 100 primeiras linhas das colunas "FirstName, EmailAddress, BirthDate".
 
 --3d
 SELECT
-FirstName AS 'Primeiro Nome',
-EmailAddress AS 'Endereço de Email',
-BirthDate AS 'Data de Nascimento'
+	FirstName AS 'Primeiro Nome',
+	EmailAddress AS 'Endereço de Email',
+	BirthDate AS 'Data de Nascimento'
 FROM DimCustomer
 
 --4
 SELECT DISTINCT
-Manufacturer AS Fornecedor
+	Manufacturer AS Fornecedor
 FROM DimProduct
 --"DISTINCT" faz com que não repita informações
 
